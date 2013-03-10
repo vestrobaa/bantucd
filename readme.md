@@ -58,4 +58,13 @@ Advanced use include building specific cloud node configurations, for example a 
 *Note*
 'Verify if the procedure works agains the newest Ubuntu releases, 12.10 at the time of writing'
 
+###Ubuntu Destko 12.10 custom CD for travelling
+
+Finding the right image to download:
+    http://http://releases.ubuntu.com/
+    http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
+    wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
+
+Checksum: b4191c1d1d6fdf358c154f8bf86b97dd *ubuntu-12.10-desktop-i386.iso
+    md5sum ~/live/ubuntu-12.10-desktop-i386.iso
 
