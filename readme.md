@@ -1,14 +1,19 @@
 ##Mastering Ubuntu Live CDs
 
 
-Provide a customized installation / live Ubuntu CD image
+Provide a customized live installation Ubuntu CD image
 
-Update can contain automatic system updates, security features, or just a pre-configured environment tailored for my use.
+Typical updates:   
+1. Automatic system updates  
+2. Security features  
+3. Pre-configured environment tailored for my use  
 
 Advanced use include building specific cloud node configurations, for example a dedicated buildbot test node, or a specific application server.
 
 ##References
-
+[Ubuntu Live CD Custimzation][LiveCDCustomization]  
+Paranoid Penguin, Customizing Live CDs Parts [1], [2] and [3]  
+[Squashfs][squashfs]
 
 
 
@@ -55,16 +60,27 @@ Advanced use include building specific cloud node configurations, for example a 
     sudo mkisofs -r -V "Ubunto-Live-Private" -b isolinux/isolinux.bin -c isolinux/boot.cat -cache-inodes -J -l -no-emul-boot -boot-load-size 4 -boot-info-table -o ~/Ubunto-Live-PrivateSurf.iso .
 
 
-*Note*
-'Verify if the procedure works agains the newest Ubuntu releases, 12.10 at the time of writing'
+
+[LiveCDCustomization]:https://help.ubuntu.com/community/LiveCDCustomization "Live CD Customization"
+[1]:http://www.linuxjournal.com/magazine/paranoid-penguin-customizing-linux-live-cds-part-i "Part 1"
+[2]:http://www.linuxjournal.com/magazine/paranoid-penguin-customizing-linux-live-cds-part-ii "Part 2"
+[3]:http://www.linuxjournal.com/magazine/paranoid-penguin-customizing-linux-live-cds-part-iii "Part 3"
+[squashfs]:http://www.tldp.org/HOWTO/SquashFS-HOWTO/creatingandusing.html "SquashFS"
+
+**Note**
+*Verify if the procedure works agains the newest Ubuntu releases, 12.10 at the time of writing*
 
 ###Ubuntu Destko 12.10 custom CD for travelling
 
 Finding the right image to download:
-    http://http://releases.ubuntu.com/
-    http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
-    wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
 
-Checksum: b4191c1d1d6fdf358c154f8bf86b97dd *ubuntu-12.10-desktop-i386.iso
+    http://releases.ubuntu.com/
+    http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
+    
+    wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
     md5sum ~/live/ubuntu-12.10-desktop-i386.iso
+    
+Reference Checksum: b4191c1d1d6fdf358c154f8bf86b97dd *ubuntu-12.10-desktop-i386.iso
+
+
 
