@@ -1,14 +1,14 @@
 ##Mastering Ubuntu Live CDs
 
 
-Provide a customized live installation Ubuntu CD image
+Provide a customized live installation Ubuntu CD image. Mastering a live CD is a way of precofiguring the ISO with software, settings and updates.
 
-Typical updates:   
+Typical usage:   
+
 1. Automatic system updates  
 2. Security features  
 3. Pre-configured environment tailored for my use  
-
-Advanced use include building specific cloud node configurations, for example a dedicated buildbot test node, or a specific application server.
+4. Cloud node configurations, for example a dedicated buildbot test node, or a specific application server.
 
 ##References
 [Ubuntu Live CD Custimzation][LiveCDCustomization]  
@@ -19,8 +19,13 @@ Paranoid Penguin, Customizing Live CDs Parts [1], [2] and [3]
 
 ##Instructions
 
+Grab a base Ubuntu or Debian based Linux distribution.
+Follow the mastering process below.
+Change the process to swap out software on the ISO.
+Use the newly mastered ISO as a live boot or an installation source.
 
-####Mastering a Life Ubuntu CD
+
+####Mastering process 
 
 
     (dd if=/dev/cdrom of=./ubuntu-8.10.iso)
@@ -67,10 +72,10 @@ Paranoid Penguin, Customizing Live CDs Parts [1], [2] and [3]
 [3]:http://www.linuxjournal.com/magazine/paranoid-penguin-customizing-linux-live-cds-part-iii "Part 3"
 [squashfs]:http://www.tldp.org/HOWTO/SquashFS-HOWTO/creatingandusing.html "SquashFS"
 
-**Note**
+**Note:**
 *Verify if the procedure works agains the newest Ubuntu releases, 12.10 at the time of writing*
 
-###Ubuntu Destko 12.10 custom CD for travelling
+###Ubuntu Desktop 12.10 custom CD for travelling
 
 Finding the right image to download:
 
@@ -84,3 +89,6 @@ Reference Checksum: b4191c1d1d6fdf358c154f8bf86b97dd *ubuntu-12.10-desktop-i386.
 
 
 
+####Other
+
+Set up the process to cut a 32 bit image, repeat with 64 bit image. Does apt-get automatically get the right version? - Probably, assuming its the same code base.
