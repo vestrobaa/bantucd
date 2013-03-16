@@ -1,8 +1,8 @@
 # Live
-.iso
+*.iso
 
 # Pyton 
-.py[cod]
+*.py[cod]
 
 # C extensions
 *.so
