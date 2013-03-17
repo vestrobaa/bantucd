@@ -79,7 +79,8 @@ Use the newly mastered ISO as a live boot or an installation source.
 
 Finding the right image to download:
 
-    http://releases.ubuntu.com/
+<http://releases.ubuntu.com/>
+
     http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
     
     wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
