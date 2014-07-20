@@ -82,7 +82,6 @@ Finding the right image to download:
 <http://releases.ubuntu.com/>
 
     http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
-    
     wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
     md5sum ~/live/ubuntu-12.10-desktop-i386.iso
     
