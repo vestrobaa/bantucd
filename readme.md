@@ -1,36 +1,36 @@
 ##Mastering Ubuntu Live CDs
 
-
 Provide a customized live installation Ubuntu CD image. Mastering a live CD is a way of precofiguring the ISO with software, settings and updates.
 
-Typical usage:   
 
-1. Automatic system updates  
-2. Security features  
-3. Pre-configured environment tailored for my use  
-4. Cloud node configurations, for example a dedicated buildbot test node, or a specific application server.
+####Typical usage
 
-##References
-[Ubuntu Live CD Custimzation][LiveCDCustomization]  
-Paranoid Penguin, Customizing Live CDs Parts [1], [2] and [3]  
-[Squashfs][squashfs]
+- Automatic system updates
+- Security features
+- Pre-configured environment tailored for my use
+- Cloud node configurations, for example a dedicated buildbot test node, or a specific application server.
 
 
+###References
 
-##Instructions
-
-Grab a base Ubuntu or Debian based Linux distribution.
-Follow the mastering process below.
-Change the process to swap out software on the ISO.
-Use the newly mastered ISO as a live boot or an installation source.
+- [Ubuntu Live CD Custimzation][LiveCDCustomization]
+- Paranoid Penguin, Customizing Live CDs Parts [1], [2] and [3]
+- [Squashfs][squashfs]
 
 
-####Mastering process 
+###Instructions
+
+Grab a base Ubuntu or Debian based Linux distribution
+Follow the mastering process below
+Change the process to swap out software on the ISO
+Use the newly mastered ISO as a live boot or an installation source
 
 
-    (dd if=/dev/cdrom of=./ubuntu-8.10.iso)
+###Mastering process
+
+    (dd if=/dev/cdrom of=./ubuntu-14.04-desktop-i386.iso)
     mkdir -p ./isomount ./isonew/squashfs ./isonew/cd ./isonew/custom
-    sudo mount -o loop ./ubuntu-8.10.iso ./isomount/
+    sudo mount -o loop ./ubuntu-14.04-desktop-i386.iso ./isomount/
     rsync --exclude=/casper/filesystem.squashfs -a ./isomount/ ./isonew/cd
     sudo modprobe squashfs
     sudo mount -t squashfs -o loop ./isomount/casper/filesystem.squashfs ./isonew/squashfs/
@@ -42,6 +42,7 @@ Use the newly mastered ISO as a live boot or an installation source.
     mount -t sysfs none /sys/
     export HOME=/root
     apt-get remove --purge `dpkg-query -W --showformat='${Package}\n' | grep openoffice`
+    apt-get remove --purge `dpkg-query -W --showformat='${Package}\n' | grep libreoffice`
     apt-get remove --purge `dpkg-query -W --showformat='${Package}\n' | grep gimp`
     apt-get update
     apt-get install tor privoxy
@@ -54,16 +55,16 @@ Use the newly mastered ISO as a live boot or an installation source.
     chmod +w ./isonew/cd/casper/filesystem.manifest
     sudo chroot ./isonew/custom dpkg-query -W --showformat='${Package} ${Version}\n' > ./isonew/cd/casper/filesystem.manifest
     sudo cp ./isonew/cd/casper/filesystem.manifest ./isonew/cd/casper/filesystem.manifest-desktop
+    (sudo apt-get install squashfs-tools)
     sudo mksquashfs ./isonew/custom ./isonew/cd/casper/filesystem.squashfs
     sudo rm ./isonew/cd/md5sum.txt
     sudo -s
     cd ./isonew/cd
-    * Edit DISKNAME parameter in ./isonew/README.diskdefines
+    * Edit DISKNAME parameter in ./README.diskdefines
     find . -type f -print0 | xargs -0 md5sum > md5sum.txt
     exit
     cd ./isonew/cd
-    sudo mkisofs -r -V "Ubunto-Live-Private" -b isolinux/isolinux.bin -c isolinux/boot.cat -cache-inodes -J -l -no-emul-boot -boot-load-size 4 -boot-info-table -o ~/Ubunto-Live-PrivateSurf.iso .
-
+    sudo mkisofs -r -V "Ubuntu-14-04-July-i386" -b isolinux/isolinux.bin -c isolinux/boot.cat -cache-inodes -J -l -no-emul-boot -boot-load-size 4 -boot-info-table -o ~/Ubuntu_14_04_July_Custom_Update_i386.iso .
 
 
 [LiveCDCustomization]:https://help.ubuntu.com/community/LiveCDCustomization "Live CD Customization"
@@ -72,23 +73,3 @@ Use the newly mastered ISO as a live boot or an installation source.
 [3]:http://www.linuxjournal.com/magazine/paranoid-penguin-customizing-linux-live-cds-part-iii "Part 3"
 [squashfs]:http://www.tldp.org/HOWTO/SquashFS-HOWTO/creatingandusing.html "SquashFS"
 
-**Note:**
-*Verify if the procedure works agains the newest Ubuntu releases, 12.10 at the time of writing*
-
-###Ubuntu Desktop 12.10 custom CD for travelling
-
-Finding the right image to download:
-
-<http://releases.ubuntu.com/>
-
-    http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
-    wget http://releases.ubuntu.com/quantal/ubuntu-12.10-desktop-i386.iso
-    md5sum ~/live/ubuntu-12.10-desktop-i386.iso
-    
-Reference Checksum: b4191c1d1d6fdf358c154f8bf86b97dd *ubuntu-12.10-desktop-i386.iso
-
-
-
-####Other
-
-Set up the process to cut a 32 bit image, repeat with 64 bit image. Does apt-get automatically get the right version? - Probably, assuming its the same code base.
