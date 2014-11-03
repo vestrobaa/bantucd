@@ -20,10 +20,10 @@ Provide a customized live installation Ubuntu CD image. Mastering a live CD is a
 
 ###Instructions
 
-Grab a base Ubuntu or Debian based Linux distribution
-Follow the mastering process below
-Change the process to swap out software on the ISO
-Use the newly mastered ISO as a live boot or an installation source
+- Grab a base Ubuntu or Debian based Linux distribution
+- Follow the mastering process below
+- Change the process to swap out software on the ISO
+- Use the newly mastered ISO as a live boot or an installation source
 
 
 ###Mastering process
